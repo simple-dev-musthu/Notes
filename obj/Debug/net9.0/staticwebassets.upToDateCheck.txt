@@ -1,4 +1,0 @@
-wwwroot\js\site.js
-wwwroot\css\site.css
-C:\Users\musth\Downloads\NotesApp\wwwroot\css\site.css
-C:\Users\musth\Downloads\NotesApp\wwwroot\js\site.js
