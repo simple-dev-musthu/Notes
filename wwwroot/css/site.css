@@ -1,0 +1,283 @@
+/* General Styles */
+:root {
+    --primary-color: #0d6efd;
+    --secondary-color: #6c757d;
+    --success-color: #198754;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --info-color: #0dcaf0;
+}
+
+html {
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px;
+}
+
+/* Navbar Styles */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+}
+
+.navbar-brand {
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+/* Note Cards */
+.note-card {
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: none;
+    border-radius: 10px;
+}
+
+.note-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15) !important;
+}
+
+.note-card .card-title {
+    color: #2c3e50;
+    font-weight: 600;
+    margin-bottom: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.note-preview {
+    max-height: 100px;
+    overflow: hidden;
+    line-height: 1.6;
+    font-size: 0.9rem;
+}
+
+.incognito-note {
+    border-left: 4px solid #dc3545;
+    background: linear-gradient(to right, #fff5f5, #ffffff);
+}
+
+/* Editor Styles */
+.editor-container {
+    min-height: 400px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.ql-container {
+    font-size: 16px;
+    min-height: 350px;
+}
+
+.ql-editor {
+    min-height: 350px;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.ql-editor:focus {
+    outline: none;
+}
+
+.toolbar {
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+/* Incognito Dropdown */
+.incognito-dropdown {
+    min-width: 300px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.incognito-dropdown .dropdown-item {
+    white-space: normal;
+    padding: 10px 15px;
+}
+
+.incognito-dropdown .dropdown-item:hover {
+    background-color: #fff3cd;
+}
+
+/* Badge */
+.badge {
+    font-size: 0.75rem;
+    padding: 0.25em 0.6em;
+}
+
+/* Buttons */
+.btn {
+    transition: all 0.3s ease;
+    border-radius: 5px;
+    font-weight: 500;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.btn-group-sm .btn {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+}
+
+/* Cards */
+.card {
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.card-header {
+    border-radius: 10px 10px 0 0 !important;
+    font-weight: 600;
+}
+
+/* Form Controls */
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+.form-control-lg {
+    padding: 0.75rem 1rem;
+    font-size: 1.1rem;
+}
+
+/* Note Content Display */
+.note-content {
+    font-size: 16px;
+    line-height: 1.8;
+    word-wrap: break-word;
+}
+
+.note-content h1, .note-content h2, .note-content h3 {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.note-content ul, .note-content ol {
+    margin-left: 20px;
+    margin-bottom: 1rem;
+}
+
+.note-content blockquote {
+    border-left: 4px solid #ddd;
+    padding-left: 15px;
+    color: #666;
+    font-style: italic;
+}
+
+/* Alerts */
+.alert {
+    border-radius: 8px;
+    border: none;
+}
+
+.alert-dismissible .btn-close {
+    padding: 0.75rem;
+}
+
+/* Input Group */
+.input-group-text {
+    background-color: #e9ecef;
+    border-color: #ced4da;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+    
+    .card-title {
+        font-size: 1rem;
+    }
+    
+    .note-preview {
+        font-size: 0.85rem;
+    }
+    
+    .ql-editor {
+        min-height: 250px;
+        font-size: 14px;
+    }
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.note-card {
+    animation: fadeIn 0.5s ease;
+}
+
+/* Loading Spinner */
+.spinner-border-sm {
+    width: 1rem;
+    height: 1rem;
+    border-width: 0.15em;
+}
+
+/* Custom Scrollbar */
+.incognito-dropdown::-webkit-scrollbar {
+    width: 8px;
+}
+
+.incognito-dropdown::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.incognito-dropdown::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.incognito-dropdown::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* PIN Input */
+input[type="color"] {
+    height: 40px;
+    cursor: pointer;
+}
+
+/* Incognito Note Indicator */
+.fas.fa-user-secret {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.6;
+    }
+}

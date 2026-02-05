@@ -1,0 +1,63 @@
+@model Note
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card shadow">
+                <div class="card-header bg-info text-white d-flex justify-content-between align-items-center">
+                    <h3 class="mb-0">
+                        @if (Model.IsIncognito)
+                        {
+                            <i class="fas fa-user-secret"></i>
+                        }
+                        else
+                        {
+                            <i class="fas fa-eye"></i>
+                        }
+                        @Model.Title
+                    </h3>
+                    <div>
+                        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning btn-sm">
+                            <i class="fas fa-edit"></i> Edit
+                        </a>
+                        <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger btn-sm">
+                            <i class="fas fa-trash"></i> Delete
+                        </a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between text-muted small">
+                            <span>
+                                <i class="fas fa-calendar-plus"></i> Created: @Model.CreatedAt.ToString("MMMM dd, yyyy hh:mm tt")
+                            </span>
+                            <span>
+                                <i class="fas fa-calendar-check"></i> Updated: @Model.UpdatedAt.ToString("MMMM dd, yyyy hh:mm tt")
+                            </span>
+                        </div>
+                        @if (Model.IsIncognito)
+                        {
+                            <div class="alert alert-warning mt-2">
+                                <i class="fas fa-user-secret"></i> This is an <strong>Incognito Note</strong>
+                            </div>
+                        }
+                    </div>
+
+                    <hr />
+
+                    <div class="note-content p-4 bg-light rounded" style="font-family: @Model.FontFamily; color: @Model.TextColor; min-height: 300px;">
+                        @Html.Raw(Model.Content)
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a asp-action="Index" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i> Back to Notes
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

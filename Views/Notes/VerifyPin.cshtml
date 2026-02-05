@@ -1,0 +1,73 @@
+@model VerifyPinViewModel
+@{
+    ViewData["Title"] = "Verify PIN";
+    var action = ViewBag.Action ?? "details";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="card shadow">
+                <div class="card-header bg-warning text-dark">
+                    <h4 class="mb-0 text-center">
+                        <i class="fas fa-lock"></i> Incognito Note - PIN Required
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-user-secret fa-4x text-warning"></i>
+                        <p class="mt-3 text-muted">This is a protected note. Please enter the 4-digit PIN code to access it.</p>
+                    </div>
+
+                    <form asp-action="VerifyPin" method="post">
+                        <input type="hidden" asp-for="NoteId" />
+                        <input type="hidden" name="action" value="@action" />
+                        
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                        <div class="mb-4">
+                            <label asp-for="PinCode" class="form-label fw-bold">Enter PIN Code</label>
+                            <input asp-for="PinCode" 
+                                   class="form-control form-control-lg text-center" 
+                                   maxlength="4" 
+                                   placeholder="••••" 
+                                   autofocus 
+                                   style="letter-spacing: 10px; font-size: 24px;" />
+                            <span asp-validation-for="PinCode" class="text-danger"></span>
+                        </div>
+
+                        <button type="submit" class="btn btn-warning w-100 btn-lg">
+                            <i class="fas fa-unlock"></i> Unlock Note
+                        </button>
+                    </form>
+
+                    <div class="text-center mt-3">
+                        <a asp-action="Index" class="text-decoration-none">
+                            <i class="fas fa-arrow-left"></i> Back to Notes
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        // Auto-submit on 4 digits
+        document.querySelector('input[name="PinCode"]').addEventListener('input', function(e) {
+            if (this.value.length === 4) {
+                // Optional: auto-submit
+                // this.form.submit();
+            }
+        });
+
+        // Only allow numbers
+        document.querySelector('input[name="PinCode"]').addEventListener('keypress', function(e) {
+            if (e.key < '0' || e.key > '9') {
+                e.preventDefault();
+            }
+        });
+    </script>
+}

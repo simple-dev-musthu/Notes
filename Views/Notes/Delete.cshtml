@@ -1,0 +1,50 @@
+@model Note
+@{
+    ViewData["Title"] = "Delete Note";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow border-danger">
+                <div class="card-header bg-danger text-white">
+                    <h3 class="mb-0"><i class="fas fa-trash"></i> Delete Note</h3>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-danger">
+                        <i class="fas fa-exclamation-triangle"></i> 
+                        <strong>Warning!</strong> Are you sure you want to delete this note? This action cannot be undone.
+                    </div>
+
+                    <h4 class="mb-3">
+                        @if (Model.IsIncognito)
+                        {
+                            <i class="fas fa-user-secret text-danger"></i>
+                        }
+                        @Model.Title
+                    </h4>
+
+                    <div class="note-preview p-3 bg-light rounded mb-3" style="font-family: @Model.FontFamily; color: @Model.TextColor;">
+                        @Html.Raw(Model.Content.Length > 200 ? Model.Content.Substring(0, 200) + "..." : Model.Content)
+                    </div>
+
+                    <div class="text-muted small mb-3">
+                        <i class="fas fa-calendar"></i> Created: @Model.CreatedAt.ToString("MMMM dd, yyyy")
+                    </div>
+
+                    <form asp-action="Delete" method="post">
+                        <input type="hidden" asp-for="Id" />
+                        <div class="d-flex gap-2">
+                            <button type="submit" class="btn btn-danger">
+                                <i class="fas fa-trash"></i> Yes, Delete Note
+                            </button>
+                            <a asp-action="Index" class="btn btn-secondary">
+                                <i class="fas fa-times"></i> Cancel
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
